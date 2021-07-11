@@ -3,11 +3,11 @@ package one.digitalinnovation.collection
 data class Funcionario(
     var nome:String,
     var salario:Double,
-    var descricao:String){
+    var tipoContrato:String){
     override fun toString(): String = """
-            Nome:       $nome
-            Salario:    $salario
-            Descricao:  $descricao
+            Nome:           $nome
+            Salario:        $salario
+            Tipo Contrato:  $tipoContrato
         """.trimIndent()
     }
 
@@ -20,16 +20,21 @@ fun main() {
 
     funcionarios.forEach { println("${it} \n") }
 
-    println("##############")
+    println("############################################")
+    println("###PROCURA MARIA E RETORNA AS INFORMAÇÕES###")
     println(funcionarios.find { it.nome == "Maria" })
 
-    println("##############")
+    println("#########################")
+    println("###ORDENAR POR SALARIO###")
+
     funcionarios
         .sortedBy { it.salario }
         .forEach { println("${it} \n") }
 
     println("##############")
+    println("###SEPARA EM GRUPOS TIPO DE CONTRATO###")
+
     funcionarios
-        .groupBy { it.descricao }
+        .groupBy { it.tipoContrato }
         .forEach { println("${it} \n") }
 }
